@@ -1,4 +1,4 @@
-/* default view */
+/* Default view */
 /* Step 1: Set animation using keyframes */
 #logo{
    animation-name: grow_logo;
@@ -21,6 +21,7 @@ body{
 header{
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
 }
 
@@ -28,6 +29,7 @@ header{
 .nav_links{
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 /* Step 5: Style color of nav links after visited */
@@ -129,10 +131,12 @@ header{
     nav{
         width: 100%;
     }
+
     /* Step 17: Edit nav links to space evenly */
     .nav_links{
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: space-evenly;
     }
 
