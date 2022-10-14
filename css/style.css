@@ -1,13 +1,11 @@
 /* default view */
-
 /* Step 1: Set animation using keyframes */
 #logo{
-   animation-name: logo_grow;
+   animation-name: grow_logo;
    animation-duration: 5s;
-   animation-iteration-count: 1;
   }
   
-@keyframes logo_grow{
+@keyframes grow_logo{
     from {width: 25px; opacity: 0;}
     to {width: 475px; opacity: 1;}
   }
@@ -19,7 +17,7 @@ body{
     background-image: url("../images/concrete_seamless.png");
 }
 
-/* Step 3: Add flex to headers to match*/
+/* Step 3: Add flex to headers to match */
 header{
     display: flex;
     flex-direction: column;
@@ -32,13 +30,13 @@ header{
     flex-direction: column;
 }
 
-/* Step 5: Style color of nav links after visited - fix */
-.nav_links:visited, .nav_links:active{
-    color: blue;
+/* Step 5: Style color of nav links after visited */
+:visited{
+    color: #0000EE; 
 }
 
 /* Step 6: Style header elements that are children of card class */
-.card>header{
+.card > header{
     background: #288088;
     border: 2px solid #45ADAD;
     padding: 20px 0px 20px 0px;
@@ -61,7 +59,7 @@ header{
 }
 
 /* Step 9: Style imgs in gallery */
-.gallery>img{
+.gallery > img{
     border: 10px solid #50C7C7;
     margin: 10px 10px 10px 10px;
     width: 300px;
@@ -80,7 +78,7 @@ header{
     /* Step 11: Edit header and nav links to use flex */
     header {
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-between;
     }
 
@@ -95,15 +93,24 @@ header{
         justify-content: flex-end;
     }
 
-    /* Step 12: Match pricing and card to example, specify size, different heights - fix */
+    /* Step 12: Match pricing and card to example, specify size, different heights */
     .pricing{
-        display: flex;
+        align-items: center;
     }
 
-    /* Step 13: Modify first header to remain visible always as we scroll - fix */
+    .card{
+        flex-basis: 275px;
+    }
+
+    /* Step 13: Modify first header to remain visible always as we scroll - fix, sticky header */
+    body > header{
+        position: sticky; 
+        top: 0;
+    }
+    
 }
 
-/* Step 14: Reduced motion - which screen size should this be part of? - fix */
+/* Step 14: Reduced motion  */
 @media (prefers-reduced-motion: reduce){
     #logo{
       animation: none;
@@ -119,14 +126,19 @@ header{
         background-image: none;
     }
 
+    nav{
+        width: 100%;
+    }
     /* Step 17: Edit nav links to space evenly */
     .nav_links{
+        display: flex;
         flex-direction: row;
         justify-content: space-evenly;
     }
 
     /* Step 18: Edit pricing so elements align on bottom */
     .pricing{
+        flex-wrap: nowrap;
         align-items: flex-end;
     }
 
@@ -136,10 +148,14 @@ header{
         flex-basis: 325px
     }
 
-    /* Step 20: Gallery should not be visible - fix */
-    .gallery{
-        overflow: hidden; 
+    /* Step 20: Gallery should not be visible */
+    #gallery, .gallery{
+       display: none; 
     }
 
-    /* Step 21: Without using list-style-type add the thumbs up entity as shown in the cards - fix */
+    /* Step 21: Without using list-style-type add the thumbs up entity as shown in the cards - fix unicode for item to render*/
+    .card ul li:nth-child(even)::after{
+        content: "\1F44D";
+    } 
+
 }
